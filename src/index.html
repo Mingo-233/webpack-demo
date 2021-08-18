@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%=require('raw-loader!./meta.html') %>
+    <title>Document</title>
+    <script><%=require('raw-loader!babel-loader!../node_modules/lib-flexible/flexible.js')%></script>
+</head>
+<body>
+  <!-- 这是一个注释 -->
+  <!-- <head>head</head>
+  <aside>aside</aside>
+  <article>
+    <title>title</title>
+    <section>section</section>
+  </article>
+  <footer>footer</footer>
+<hr> -->
+<div id="app"></div>
+
+</body>
+</html>
