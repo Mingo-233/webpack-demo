@@ -4,9 +4,11 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './index.less'
 import ll from './img/LL2.jpg'
+import '../common';
+
 class SayHiDemo extends Component {
   render() {
-    a =22
+    // a =22
     return (
     <div>
       <h2>hello babel</h2>
