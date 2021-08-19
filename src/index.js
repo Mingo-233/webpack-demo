@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './index.less'
 import ll from './img/LL2.jpg'
-import '../common';
+import {sayAA} from '../common';
 
 class SayHiDemo extends Component {
   render() {
