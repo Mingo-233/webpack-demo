@@ -1,4 +1,4 @@
-'use strict';
+
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -23,7 +23,10 @@ module.exports = {
     rules: [
       {
         test: /.js$/,
-        use: 'babel-loader'
+        use: [
+          'babel-loader',
+          // 'eslint-loader'
+        ]
       },
       // {
       //   test:/.css$/,
@@ -85,20 +88,20 @@ module.exports = {
       }
     }),
     new CleanWebpackPlugin(),
-    // new HtmlWebpackExternalsPlugin({
-    //   externals:[
-    //     {
-    //       module: 'react',
-    //       entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
-    //       global: 'React',
-    //     },
-    //     {
-    //       module: 'react-dom',
-    //       entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
-    //       global: 'ReactDOM',
-    //     },
-    //   ]
-    // })
+    new HtmlWebpackExternalsPlugin({
+      externals:[
+        {
+          module: 'react',
+          entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
+          global: 'React',
+        },
+        {
+          module: 'react-dom',
+          entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
+          global: 'ReactDOM',
+        },
+      ]
+    })
   ],
   //   optimization: {
   //     splitChunks: {
@@ -111,17 +114,17 @@ module.exports = {
   //         }
   //     }
   // },
-  optimization: {
-    splitChunks: {
-      minSize: 0,
-      cacheGroups: {
-        commons: {
-          name: 'commons',
-          chunks: 'all',
-          minChunks: 1
-        }
-      }
-    }
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     minSize: 0,
+  //     cacheGroups: {
+  //       commons: {
+  //         name: 'commons',
+  //         chunks: 'all',
+  //         minChunks: 1
+  //       }
+  //     }
+  //   }
+  // },
   devtool: 'eval-source-map'
 }
