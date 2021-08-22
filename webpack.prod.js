@@ -1,10 +1,10 @@
-
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
   // watch:true,
@@ -101,7 +101,8 @@ module.exports = {
           global: 'ReactDOM',
         },
       ]
-    })
+    }),
+    new FriendlyErrorsWebpackPlugin(),
   ],
   //   optimization: {
   //     splitChunks: {
@@ -126,5 +127,6 @@ module.exports = {
   //     }
   //   }
   // },
-  devtool: 'eval-source-map'
+  // devtool: 'eval-source-map',
+  stats: 'errors-only'
 }

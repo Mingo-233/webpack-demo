@@ -1,9 +1,10 @@
-'use strict';
+
 const webpack = require('webpack');
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
   watch: true,
@@ -44,10 +45,12 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new FriendlyErrorsWebpackPlugin()
   ],
   devServer: {
     contentBase: './dist',
-    hot: true
+    hot: true,
+    stats: 'errors-only'
   },
 
 
