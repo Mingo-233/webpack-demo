@@ -7,7 +7,7 @@ module.exports = {
         "Chrome > 31",
         "ff > 31",
         "ie >= 8"
-        //'last 2 versions', // 所有主流浏览器最近2个版本
+        // 'last 2 versions', // 所有主流浏览器最近2个版本
       ],
       grid: true
     }

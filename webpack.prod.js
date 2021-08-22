@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-
+const CopyWebpackPlugin = require('./plugins/CopyWebpackPlugin')
 module.exports = {
   // watch:true,
   // watchOptions:{
@@ -103,6 +103,12 @@ module.exports = {
       ]
     }),
     new FriendlyErrorsWebpackPlugin(),
+    new CopyWebpackPlugin({
+      dirFiles: path.resolve(__dirname, 'dist'),
+      dirFilesTo: 'E:/FrontendDevelopment/17webpack/save',
+      dir: path.resolve(__dirname, 'dist'),
+      dirTo: 'E:/FrontendDevelopment/17webpack/save',
+    }),
   ],
   //   optimization: {
   //     splitChunks: {
@@ -128,5 +134,5 @@ module.exports = {
   //   }
   // },
   // devtool: 'eval-source-map',
-  stats: 'errors-only'
+  // stats: 'errors-only'
 }
