@@ -1,5 +1,4 @@
 const glob = require('glob-all');
-
 describe('Checking generated html files', () => {
   it('should generate html files', (done) => {
       const files = glob.sync([
