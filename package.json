@@ -8,7 +8,6 @@
     "build": "webpack --config webpack.prod.js",
     "watch": "webpack --watch",
     "prepare": "husky install",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "husky": {
       "hooks": {
         "commit-msg": "commitlint -e $1" 
