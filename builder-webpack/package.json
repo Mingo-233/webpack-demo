@@ -9,8 +9,7 @@
   },
   "scripts": {
     "eslint": "eslint ./lib --fix ",
-    "test": "istanbul cover ./node_modules/.bin/_mocha",
-    "commitmsg": "validate-commit-msg"
+    "test": "istanbul cover ./node_modules/.bin/_mocha"
   },
   "keywords": [],
   "author": "",

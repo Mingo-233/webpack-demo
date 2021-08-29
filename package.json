@@ -7,6 +7,7 @@
     "dev": "webpack-dev-server --config webpack.dev.js --open",
     "build": "webpack --config webpack.prod.js",
     "watch": "webpack --watch",
+    "commitmsg": "validate-commit-msg",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
