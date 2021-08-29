@@ -7,9 +7,13 @@
     "dev": "webpack-dev-server --config webpack.dev.js --open",
     "build": "webpack --config webpack.prod.js",
     "watch": "webpack --watch",
-    "commitmsg": "validate-commit-msg",
     "prepare": "husky install",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "husky": {
+      "hooks": {
+        "commit-msg": "commitlint -e $1" 
+      }
+    }
   },
   "keywords": [],
   "author": "",
