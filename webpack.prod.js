@@ -6,6 +6,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const CopyWebpackPlugin = require('./plugins/CopyWebpackPlugin')
+const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
+const smp = new SpeedMeasureWebpackPlugin();
+
 module.exports = {
   // watch:true,
   // watchOptions:{
@@ -28,10 +31,6 @@ module.exports = {
           // 'eslint-loader'
         ]
       },
-      // {
-      //   test:/.css$/,
-      //   use:[MiniCssExtractPlugin.loader,'css-loader']
-      // },
       {
         test: /.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader',
@@ -45,13 +44,13 @@ module.exports = {
       },
       {
         test: /.less$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', {
+        use: [MiniCssExtractPlugin.loader, 'css-loader',  {
           loader: 'px2rem-loader',
           options: {
             remUnit: 75,
             remPrecision: 8
           }
-        }, 'less-loader', 'postcss-loader',
+        }, 'less-loader','postcss-loader'
         ]
       },
       {
@@ -103,12 +102,12 @@ module.exports = {
       ]
     }),
     new FriendlyErrorsWebpackPlugin(),
-    new CopyWebpackPlugin({
-      dirFiles: path.resolve(__dirname, 'dist'),
-      dirFilesTo: 'E:/FrontendDevelopment/17webpack/save',
-      dir: path.resolve(__dirname, 'dist'),
-      dirTo: 'E:/FrontendDevelopment/17webpack/save',
-    }),
+    // new CopyWebpackPlugin({
+    //   dirFiles: path.resolve(__dirname, 'dist'),
+    //   dirFilesTo: 'E:/FrontendDevelopment/17webpack/save',
+    //   dir: path.resolve(__dirname, 'dist'),
+    //   dirTo: 'E:/FrontendDevelopment/17webpack/save',
+    // }),
   ],
   //   optimization: {
   //     splitChunks: {
@@ -121,18 +120,18 @@ module.exports = {
   //         }
   //     }
   // },
-  // optimization: {
-  //   splitChunks: {
-  //     minSize: 0,
-  //     cacheGroups: {
-  //       commons: {
-  //         name: 'commons',
-  //         chunks: 'all',
-  //         minChunks: 1
-  //       }
-  //     }
-  //   }
-  // },
+  optimization: {
+    splitChunks: {
+      minSize: 0,
+      cacheGroups: {
+        commons: {
+          name: 'commons',
+          chunks: 'all',
+          minChunks: 2
+        }
+      }
+    }
+  },
   // devtool: 'eval-source-map',
-  // stats: 'errors-only'
+  stats: 'errors-only'
 }
