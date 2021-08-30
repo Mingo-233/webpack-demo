@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require('./plugins/CopyWebpackPlugin')
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
 const smp = new SpeedMeasureWebpackPlugin();
 
-module.exports = {
+module.exports = smp.wrap({
   // watch:true,
   // watchOptions:{
   //   ignored:/node_modules/,
@@ -50,7 +50,7 @@ module.exports = {
             remUnit: 75,
             remPrecision: 8
           }
-        }, 'less-loader','postcss-loader'
+        }, 'postcss-loader','less-loader'
         ]
       },
       {
@@ -134,4 +134,4 @@ module.exports = {
   },
   // devtool: 'eval-source-map',
   stats: 'errors-only'
-}
+})
