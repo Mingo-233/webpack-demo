@@ -7,9 +7,11 @@ const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const CopyWebpackPlugin = require('./plugins/CopyWebpackPlugin')
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
 const smp = new SpeedMeasureWebpackPlugin();
 
-module.exports = smp.wrap({
+module.exports = {
   // watch:true,
   // watchOptions:{
   //   ignored:/node_modules/,
@@ -87,21 +89,22 @@ module.exports = smp.wrap({
       }
     }),
     new CleanWebpackPlugin(),
-    new HtmlWebpackExternalsPlugin({
-      externals:[
-        {
-          module: 'react',
-          entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
-          global: 'React',
-        },
-        {
-          module: 'react-dom',
-          entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
-          global: 'ReactDOM',
-        },
-      ]
-    }),
+    // new HtmlWebpackExternalsPlugin({
+    //   externals:[
+    //     {
+    //       module: 'react',
+    //       entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js',
+    //       global: 'React',
+    //     },
+    //     {
+    //       module: 'react-dom',
+    //       entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
+    //       global: 'ReactDOM',
+    //     },
+    //   ]
+    // }),
     new FriendlyErrorsWebpackPlugin(),
+    new BundleAnalyzerPlugin()
     // new CopyWebpackPlugin({
     //   dirFiles: path.resolve(__dirname, 'dist'),
     //   dirFilesTo: 'E:/FrontendDevelopment/17webpack/save',
@@ -134,4 +137,4 @@ module.exports = smp.wrap({
   },
   // devtool: 'eval-source-map',
   stats: 'errors-only'
-})
+}

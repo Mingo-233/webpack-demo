@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[687],{687:function(e,n,t){t.r(n);var u=t(804),l=t.n(u);n.default=function(){return l().createElement("div",null,"heloo 这是动态import")}}}]);

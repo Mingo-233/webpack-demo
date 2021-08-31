@@ -7,12 +7,7 @@
     "dev": "webpack-dev-server --config webpack.dev.js --open",
     "build": "webpack --config webpack.prod.js",
     "watch": "webpack --watch",
-    "prepare": "husky install",
-    "husky": {
-      "hooks": {
-        "commit-msg": "commitlint -e $1"
-      }
-    }
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -52,6 +47,7 @@
     "style-loader": "^3.2.1",
     "validate-commit-msg": "^2.14.0",
     "webpack": "^5.47.1",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^3.11.2"
   },

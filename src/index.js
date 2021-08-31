@@ -2,7 +2,9 @@
 
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import './index.less'
+// import './index.less'
+// import './index.css'
+
 import ll from './img/LL2.jpg'
 import {sayAA} from '../common';
 import numberAddd from '@mingo_789/number-add'
