@@ -4,12 +4,12 @@ const path = require('path')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
-  watch: true,
-  watchOptions: {
-    ignored: /node_modules/,
-    aggregateTimeout: 300,
-    poll: 3000
-  },
+  // watch: true,
+  // watchOptions: {
+  //   ignored: /node_modules/,
+  //   aggregateTimeout: 300,
+  //   poll: 3000
+  // },
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
@@ -45,9 +45,16 @@ module.exports = {
     new FriendlyErrorsWebpackPlugin()
   ],
   devServer: {
-    contentBase: './dist',
+    // contentBase: './dist',
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    compress: true,
+    port:9090,
     hot: true,
-    stats: 'errors-only'
+    stats: 'errors-only',
+    open:true
+
   },
 
 
