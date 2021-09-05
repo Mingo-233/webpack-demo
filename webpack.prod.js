@@ -8,9 +8,9 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const CopyWebpackPlugin = require('./plugins/CopyWebpackPlugin')
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-
+const TerserPlugin = require('terser-webpack-plugin')
 const smp = new SpeedMeasureWebpackPlugin();
-
+const webpack = require('webpack');
 module.exports = {
   // watch:true,
   // watchOptions:{
@@ -30,9 +30,9 @@ module.exports = {
         test: /.js$/,
         use: [
           {
-            loader:'thread-loader',
-            options:{
-              workers:2
+            loader: 'thread-loader',
+            options: {
+              workers: 2
             }
           },
           'babel-loader'
@@ -52,13 +52,13 @@ module.exports = {
       },
       {
         test: /.less$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader',  {
+        use: [MiniCssExtractPlugin.loader, 'css-loader', {
           loader: 'px2rem-loader',
           options: {
             remUnit: 75,
             remPrecision: 8
           }
-        }, 'postcss-loader','less-loader'
+        }, 'postcss-loader', 'less-loader'
         ]
       },
       {
@@ -95,6 +95,11 @@ module.exports = {
       }
     }),
     new CleanWebpackPlugin(),
+    new webpack.DllReferencePlugin({
+      // 注意: DllReferencePlugin 的 context 必须和 package.json 的同级目录，要不然会链接失败
+      context: path.resolve(__dirname, './'),
+      manifest: require('./build/library/library.json')
+    }),
     // new HtmlWebpackExternalsPlugin({
     //   externals:[
     //     {
@@ -130,16 +135,21 @@ module.exports = {
   //     }
   // },
   optimization: {
-    splitChunks: {
-      minSize: 0,
-      cacheGroups: {
-        commons: {
-          name: 'commons',
-          chunks: 'all',
-          minChunks: 2
-        }
-      }
-    }
+    // splitChunks: {
+    //   minSize: 0,
+    //   cacheGroups: {
+    //     commons: {
+    //       name: 'commons',
+    //       chunks: 'all',
+    //       minChunks: 2
+    //     }
+    //   }
+    // },
+    // minimizer:[
+    //   new TerserPlugin({
+    //     parallel:true
+    //   })
+    // ]
   },
   // devtool: 'eval-source-map',
   // stats: 'errors-only'

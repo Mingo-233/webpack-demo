@@ -7,7 +7,8 @@
     "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "watch": "webpack --watch",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dll": "webpack --config webpack.dll.js"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +32,7 @@
     "eslint-plugin-react": "^7.24.0",
     "file-loader": "^6.2.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
+    "hard-source-webpack-plugin": "^0.13.1",
     "html-webpack-externals-plugin": "^3.8.0",
     "html-webpack-plugin": "^5.3.2",
     "husky": "^7.0.2",
@@ -45,6 +47,7 @@
     "react-dom": "^17.0.2",
     "speed-measure-webpack-plugin": "^1.5.0",
     "style-loader": "^3.2.1",
+    "terser-webpack-plugin": "^5.2.3",
     "thread-loader": "^3.0.4",
     "validate-commit-msg": "^2.14.0",
     "webpack": "^5.47.1",
