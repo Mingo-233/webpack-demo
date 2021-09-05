@@ -7,7 +7,7 @@ const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const CopyWebpackPlugin = require('./plugins/CopyWebpackPlugin')
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const smp = new SpeedMeasureWebpackPlugin();
 
@@ -29,7 +29,13 @@ module.exports = {
       {
         test: /.js$/,
         use: [
-          'babel-loader',
+          {
+            loader:'thread-loader',
+            options:{
+              workers:2
+            }
+          },
+          'babel-loader'
           // 'eslint-loader'
         ]
       },
@@ -103,8 +109,8 @@ module.exports = {
     //     },
     //   ]
     // }),
-    new FriendlyErrorsWebpackPlugin(),
-    new BundleAnalyzerPlugin()
+    // new FriendlyErrorsWebpackPlugin(),
+    // new BundleAnalyzerPlugin()
     // new CopyWebpackPlugin({
     //   dirFiles: path.resolve(__dirname, 'dist'),
     //   dirFilesTo: 'E:/FrontendDevelopment/17webpack/save',
@@ -136,5 +142,5 @@ module.exports = {
     }
   },
   // devtool: 'eval-source-map',
-  stats: 'errors-only'
+  // stats: 'errors-only'
 }
