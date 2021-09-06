@@ -7,6 +7,8 @@ const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const CopyWebpackPlugin = require('./plugins/CopyWebpackPlugin')
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const TerserPlugin = require('terser-webpack-plugin')
 const smp = new SpeedMeasureWebpackPlugin();
@@ -35,7 +37,7 @@ module.exports = {
               workers: 2
             }
           },
-          'babel-loader'
+          'babel-loader?cacheDirectory=true'
           // 'eslint-loader'
         ]
       },
@@ -95,11 +97,10 @@ module.exports = {
       }
     }),
     new CleanWebpackPlugin(),
-    new webpack.DllReferencePlugin({
-      // 注意: DllReferencePlugin 的 context 必须和 package.json 的同级目录，要不然会链接失败
-      context: path.resolve(__dirname, './'),
-      manifest: require('./build/library/library.json')
-    }),
+    // new HardSourceWebpackPlugin(),
+    // new webpack.DllReferencePlugin({
+    //   manifest: require('./build/library/library.json')
+    // }),
     // new HtmlWebpackExternalsPlugin({
     //   externals:[
     //     {
@@ -145,11 +146,12 @@ module.exports = {
     //     }
     //   }
     // },
-    // minimizer:[
-    //   new TerserPlugin({
-    //     parallel:true
-    //   })
-    // ]
+    minimizer:[
+      new TerserPlugin({
+        parallel:true,
+        cache: true
+      })
+    ]
   },
   // devtool: 'eval-source-map',
   // stats: 'errors-only'

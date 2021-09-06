@@ -3,6 +3,11 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+    context:process.cwd(),
+    resolve:{
+        extensions:['.js','.jsx','less','css'],
+        modules:[__dirname,'node_modules']
+    },
     entry: {
         library: [
             'react',
