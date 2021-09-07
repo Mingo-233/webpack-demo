@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-// import './index.less'
+import './index.less'
 // import './index.css'
 
 import ll from './img/LL2.jpg'
