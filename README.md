@@ -1,3 +1,4 @@
+# git 规范
 feat：新功能（feature）
 
 fix：修补bug
