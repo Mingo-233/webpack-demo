@@ -8,6 +8,8 @@
     "build": "webpack --config webpack.prod.js",
     "watch": "webpack --watch",
     "prepare": "husky install",
+    "report": "webpack --config webpack.prod.js --report",
+    "report1": "npm run build ",
     "dll": "webpack --config webpack.dll.js"
   },
   "keywords": [],

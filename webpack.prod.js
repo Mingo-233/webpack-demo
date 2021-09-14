@@ -8,7 +8,7 @@ const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const CopyWebpackPlugin = require('./plugins/CopyWebpackPlugin')
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -17,6 +17,8 @@ const webpack = require('webpack');
 const PATHS = {
   src: path.join(__dirname, 'src')
 };
+console.log(process.env);
+console.log(process.env.npm_config_report);
 module.exports = {
   // watch:true,
   // watchOptions:{
