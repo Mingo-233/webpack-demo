@@ -1,5 +1,5 @@
 const path = require('path');
-// const ZipPlugin = require('./plugins/zip-plugin');
+const ZipPlugin = require('./plugins/zip-plugin');
 const MyPlugin = require('./plugins/demo-plugins')
 module.exports = {
     entry: './src/index.js',
@@ -9,9 +9,9 @@ module.exports = {
     },
     mode: 'production',
     plugins: [
-        new MyPlugin('xixi')
-        // new ZipPlugin({
-        //     filename: 'offline'
-        // })
+        // new MyPlugin('xixi')
+        new ZipPlugin({
+            filename: 'offline'
+        })
     ]
 }
