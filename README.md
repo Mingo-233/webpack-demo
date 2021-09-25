@@ -64,3 +64,13 @@ $ git commit -m 'added image to repo :art:'
 |:penguin: (企鹅)	:penguin:	修复 Linux 下的问题
 |:checkered_flag: (旗帜)	:checkered_flag:	修复 Windows 下的问题
 |:twisted_rightwards_arrows: (交叉箭头)	|:twisted_rightwards_arrows:	分支合并
+
+
+# 函数注释规范
+/**
+       * @author: mingo
+       * @description: 计算两个日期距离今天几天
+       * @param {String} date1 yyyy-mm-dd 格式日期
+       * @param {String} date2
+       * @return {Object}
+       */
